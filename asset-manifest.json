@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/form-todo-redux/static/css/main.799316f9.css",
+    "main.js": "/form-todo-redux/static/js/main.3b1d4fd4.js",
+    "index.html": "/form-todo-redux/index.html",
+    "main.799316f9.css.map": "/form-todo-redux/static/css/main.799316f9.css.map",
+    "main.3b1d4fd4.js.map": "/form-todo-redux/static/js/main.3b1d4fd4.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.799316f9.css",
+    "static/js/main.3b1d4fd4.js"
+  ]
+}
