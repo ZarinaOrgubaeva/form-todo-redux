@@ -1,24 +1,36 @@
-import logo from './logo.svg';
-import './App.css';
-
+import { useDispatch } from "react-redux";
+import { Route, Routes } from "react-router-dom";
+import { Auth } from "./components/form/Auth";
+import { Header } from "./components/header/Header";
+import { ToDo } from "./components/toDoList/ToDo";
+import { ToDoList } from "./components/toDoList/ToDoList";
+import { Button } from "./components/UI/button/Button";
+import { deleteAllToDo } from "./store/actions";
 function App() {
+  const dispatch = useDispatch();
+  const deleteAll = () => {
+    dispatch(deleteAllToDo());
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
+    <>
+      <Routes>
+        <Route path="/" element={<Header />} />
+        <Route path="/form/" element={<Auth />} />
+        <Route
+          path="/todo/:id"
+          element={
+            <ToDo>
+              <ToDoList/>
+              {" "}
+              <Button onClick={deleteAll}>Delete All</Button>
+            </ToDo>
+          }
         >
-          Learn React
-        </a>
-      </header>
-    </div>
+         
+        </Route>
+      </Routes>
+    </>
   );
 }
 
