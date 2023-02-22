@@ -2,10 +2,10 @@ import { useState } from "react";
 import { Input } from "../UI/input/Input";
 import { Button } from "../UI/button/Button";
 import { useDispatch } from "react-redux";
-import { addToDo } from "../../store/actions";
 import styled from "styled-components";
 import { Outlet } from "react-router-dom";
 import { Header } from "../header/Header";
+import { toDoSlice } from "../../store/toDoSlice";
 export const ToDo = ({ children }) => {
   const [todo, setToDo] = useState(" ");
   const dispatch = useDispatch();
@@ -20,7 +20,7 @@ export const ToDo = ({ children }) => {
       title: todo,
       completed: false,
     };
-    dispatch(addToDo(todoObj));
+    dispatch(toDoSlice.actions.addTodo(todoObj));
     setToDo("");
   };
   return (

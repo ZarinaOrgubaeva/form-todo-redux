@@ -1,19 +1,20 @@
 import { useDispatch, useSelector } from "react-redux";
-import { completedToDo, deleteToDo } from "../../store/actions";
 import { Button } from "../UI/button/Button";
 import styled from "styled-components";
+import { toDoSlice } from "../../store/toDoSlice";
 export const ToDoList = () => {
-  const state = useSelector((state) => state.todo);
+  const {toDo}= useSelector((state) => state);
+  console.log(toDo);
   const dispatch = useDispatch();
   return (
     <ul>
-      {state.map((todo) => {
+      {toDo.map((todo) => {
         return (
           <StyledList key={todo.id}>
             <input
               type="checkbox"
               checked={todo.completed}
-              onChange={() => dispatch(completedToDo(todo.id))}
+              onChange={() => dispatch(toDoSlice.actions.completed(todo.id))}
             />
             <li
               style={
@@ -24,7 +25,7 @@ export const ToDoList = () => {
             >
               {todo.title}
             </li>
-            <Button onClick={() => dispatch(deleteToDo(todo.id))}>
+            <Button onClick={() => dispatch(toDoSlice.actions.deleteTodo(todo.id))}>
               Delete
             </Button>
           </StyledList>

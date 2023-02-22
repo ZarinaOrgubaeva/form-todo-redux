@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import { LOG_IN } from "../../store/actions";
+import { authSlice } from "../../store/authSlice";
 import { Header } from "../header/Header";
 import { Button } from "../UI/button/Button";
 import { Input } from "../UI/input/Input";
@@ -21,10 +21,7 @@ export const Auth = () => {
   const submitHandler = (event) => {
     event.preventDefault();
     if (form.email === "user@gmail.com" && form.password === "123456") {
-      dispatch({
-        type: LOG_IN,
-        payload: form.email,
-      });
+      dispatch(authSlice.actions.authLogin(form.email));
     } else {
       alert("error");
     }

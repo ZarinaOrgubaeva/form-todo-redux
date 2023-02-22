@@ -5,11 +5,12 @@ import { Header } from "./components/header/Header";
 import { ToDo } from "./components/toDoList/ToDo";
 import { ToDoList } from "./components/toDoList/ToDoList";
 import { Button } from "./components/UI/button/Button";
-import { deleteAllToDo } from "./store/actions";
+import { toDoSlice } from "./store/toDoSlice";
+
 function App() {
   const dispatch = useDispatch();
   const deleteAll = () => {
-    dispatch(deleteAllToDo());
+    dispatch(toDoSlice.actions.deleteAll());
   };
 
   return (
